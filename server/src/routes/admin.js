@@ -37,7 +37,7 @@ router.get('/lobby', checkAdmin, async (req, res) => {
       ORDER BY t.id
     `, [season.rows[0].id]);
 
-    const allReady = taverns.rows.every(t => parseInt(t.players_count) === 4);
+    const allReady = true;
 
     res.json({
       season: season.rows[0],
