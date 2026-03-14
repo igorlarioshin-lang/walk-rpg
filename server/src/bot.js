@@ -325,7 +325,7 @@ bot.on('callback_query', async (query) => {
 
   try {
     const axios = require('axios');
-    await axios.post(`http://localhost:${process.env.PORT}/admin/start-season`, {
+    await axios.post(`${process.env.SERVER_URL}/admin/start-season`, {
       telegram_id
     });
 
