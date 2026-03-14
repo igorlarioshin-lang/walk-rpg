@@ -68,20 +68,8 @@ router.post('/start-season', checkAdmin, async (req, res) => {
 
     const s = season.rows[0];
 
-    // Проверяем что все таверны заполнены
-    const taverns = await client.query(`
-      SELECT t.id, COUNT(c.id) as cnt
-      FROM taverns t
-      LEFT JOIN characters c ON c.tavern_id = t.id AND c.season_id = $1
-      WHERE t.season_id = $1
-      GROUP BY t.id
-    `, [s.id]);
-
-    const notFull = taverns.rows.filter(t => parseInt(t.cnt) < 4);
-    if (notFull.length > 0) {
-      await client.query('ROLLBACK');
-      return res.status(400).json({ error: 'Не все таверны заполнены' });
-    }
+    
+  
 
     // Получаем первую локацию
     const firstLocation = await client.query(`
