@@ -4,7 +4,7 @@ const db = require('../db');
 
 // Middleware — проверка что запрос от администратора
 const checkAdmin = async (req, res, next) => {
-  const { telegram_id } = req.query || req.body;
+  const { telegram_id } = req.body.telegram_id ? req.body : req.query;
   if (!telegram_id) return res.status(401).json({ error: 'Не авторизован' });
 
   const admin = await db.query(
