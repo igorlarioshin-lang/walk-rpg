@@ -298,7 +298,6 @@ bot.onText(/\/admin/, async (msg) => {
   for (const t of taverns.rows) {
     const cnt = parseInt(t.cnt);
     const ready = cnt === 4;
-    if (!ready) allReady = false;
     text += `${t.emoji} ${t.name}: ${cnt}/4 ${ready ? '✅' : '⏳'}\n`;
   }
 
