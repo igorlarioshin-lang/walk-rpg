@@ -1,3 +1,4 @@
+process.env.LANG = 'en_US.UTF-8';
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const db = require('./db');
